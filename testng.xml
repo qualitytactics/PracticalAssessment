@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite">
+	<test thread-count="5" name="Test">
+		<classes>
+			<class name="assessment.main.Home">
+				<methods>
+					<include name="OpenHomepage" />
+					<include name="cookieconsent" />
+					<include name="Menuclick" />
+					<!-- <exclude name="Menuclick" />  Enter Method which you
+					don't want to Run -->
+				</methods>
+			</class>
+			<class name="assessment.main.Category">
+				<methods>
+					<include name="searchproduct" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite> 
