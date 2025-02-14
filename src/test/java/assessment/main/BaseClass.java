@@ -60,7 +60,7 @@ public class BaseClass {
 
 		} else {
 			System.out.println("Browser isn't availabled");
-
+			
 		}
 		softAssert = new SoftAssert();
 	}

@@ -25,5 +25,8 @@ public class Category extends BaseClass {
 		Categorypage.drpFurWenclick();
 		//Categorypage.sendkeytxtselectdrpFurWenoption(SearchCriteria.get(0).get(3).toString());
 		Categorypage.selectdrpFurWenoption();
+		
+		
+		Categorypage.verificationcondition();
 	}
 }

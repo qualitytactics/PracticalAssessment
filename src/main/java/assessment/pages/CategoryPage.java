@@ -2,12 +2,12 @@ package assessment.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
+import assessment.utility.Utility;
 import assessment.main.BaseClass;
 
 public class CategoryPage extends BaseClass {
 	WebDriver driver;
+	Utility Utility = new Utility();
 
 	public CategoryPage(WebDriver driver) {
 		this.driver = driver;
@@ -22,9 +22,7 @@ public class CategoryPage extends BaseClass {
 
 	public By txtProduktart = By.xpath("//input[@placeholder='Produktart suchen']");
 	public By txtMarkesuchen = By.xpath("//input[@placeholder='Marke suchen']");
-	
-	
-	
+
 	public By txtselectProduktartoption = By.xpath("//div[@class='facet-option__label']//div[contains(text(),'"
 			+ SearchCriteria.get(0).get(0).toString() + "')]");
 
@@ -34,78 +32,73 @@ public class CategoryPage extends BaseClass {
 			.xpath("//div[contains(text(),'" + SearchCriteria.get(0).get(2) + "')]");
 	public By txtselectdrpFurWenoption = By.xpath("//div[contains(text(),'" + SearchCriteria.get(0).get(3) + "')]");
 
+	public By btnsearchcriteria = By.xpath("//button[contains(text(),'" + SearchCriteria.get(0).get(3) + "')]");
+
 	public void sendkeytxtProduktart(String Value) {
-		Send_Value(txtProduktart, Value);
+		Utility.Send_Value(txtProduktart, Value);
 	}
 
 	public void sendkeytxtMarkesuchen(String Value) {
-		Send_Value(txtMarkesuchen, Value);
+		Utility.Send_Value(txtMarkesuchen, Value);
 	}
 
 	public void sendkeytxtselectdrpGeschenkfuroption(String Value) {
-		Send_Value(txtselectdrpGeschenkfuroption, Value);
+		Utility.Send_Value(txtselectdrpGeschenkfuroption, Value);
 	}
 
 	public void sendkeytxtselectdrpFurWenoption(String Value) {
-		Send_Value(txtselectdrpFurWenoption, Value);
+		Utility.Send_Value(txtselectdrpFurWenoption, Value);
 	}
 
 	public void selectProduktartoption() {
 
-		Click_on_Element(txtselectProduktartoption);
+		Utility.Click_on_Element(txtselectProduktartoption);
 
 	}
 
 	public void selectdrpMarkeoption() {
-		Click_on_Element(txtselectdrpMarkeoption);
+		Utility.Click_on_Element(txtselectdrpMarkeoption);
 	}
 
 	public void selectdrpProduktartoption() {
-		Click_on_Element(txtselectdrpProduktartoption);
+		Utility.Click_on_Element(txtselectdrpProduktartoption);
 	}
 
 	public void selectdrpGeschenkfuroption() {
-		Click_on_Element(txtselectdrpGeschenkfuroption);
+		Utility.Click_on_Element(txtselectdrpGeschenkfuroption);
 	}
 
 	public void selectdrpFurWenoption() {
-		Click_on_Element(txtselectdrpFurWenoption);
+		Utility.Click_on_Element(txtselectdrpFurWenoption);
 	}
 
 	public void Waitforpageload() {
-		Click_on_Element(Menu);
+		Utility.Click_on_Element(Menu);
 	}
 
 	public void drpMarkeclick() {
-		Click_on_Element(drpMarke);
+		Utility.Click_on_Element(drpMarke);
 	}
 
 	public void drpGeschenkfurclick() {
-		Click_on_Element(drpGeschenkfur);
+		Utility.Click_on_Element(drpGeschenkfur);
 	}
 
 	public void drpFurWenclick() {
-		Click_on_Element(drpFurWen);
+		Utility.Click_on_Element(drpFurWen);
 	}
 
 	public void btnexpandclick() {
-		Click_on_Element(btnexpand);
+		Utility.Click_on_Element(btnexpand);
 	}
 
 	public void drpProduktartclick() {
-		Click_on_Element(drpProduktart);
+		Utility.Click_on_Element(drpProduktart);
+	}
+	
+	public void verificationcondition() {
+		Utility.verificationcondition(btnsearchcriteria);
 	}
 
-	private void Send_Value(By elementname, String Value) {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(elementname));
-		wait.until(ExpectedConditions.elementToBeClickable(elementname));
-		driver.findElement(elementname).sendKeys(Value);
-	}
-
-	private void Click_on_Element(By elementname) {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(elementname));
-		wait.until(ExpectedConditions.elementToBeClickable(elementname));
-		driver.findElement(elementname).click();
-	}
 
 }
