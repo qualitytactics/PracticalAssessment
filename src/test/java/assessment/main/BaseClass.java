@@ -8,6 +8,8 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -26,8 +28,8 @@ public class BaseClass {
 
 	@BeforeSuite
 	public void beforeSuite() {
-		
-		//Read property file
+
+		// Read property file
 		try {
 			reader = new FileReader("Masterdata.properties");
 			p = new Properties();
@@ -35,17 +37,31 @@ public class BaseClass {
 		} catch (Exception e) {
 
 		}
-		//Read Excel Data 
+		// Read Excel Data
 		ReadData RD = new ReadData();
 		SearchCriteria = RD.readdata("Search");
 		length = SearchCriteria.size();
 
-		//Open Browser
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--test-type");
-		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
-		wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		// Open Browser
+		String browser = p.getProperty("browser");
+		if (browser.equals("Chrome")) {
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--test-type");
+			driver = new ChromeDriver(options);
+			driver.manage().window().maximize();
+			wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+
+		} else if (browser.equals("Firefox")) {
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--test-type");
+			driver = new FirefoxDriver(options);
+			driver.manage().window().maximize();
+			wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+
+		} else {
+			System.out.println("Browser isn't availabled");
+
+		}
 		softAssert = new SoftAssert();
 	}
 

@@ -8,8 +8,6 @@
 					<include name="OpenHomepage" />
 					<include name="cookieconsent" />
 					<include name="Menuclick" />
-					<!-- <exclude name="Menuclick" />  Enter Method which you
-					don't want to Run -->
 				</methods>
 			</class>
 			<class name="assessment.main.Category">

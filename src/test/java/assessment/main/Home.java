@@ -7,31 +7,29 @@ import org.testng.annotations.Test;
 
 public class Home extends BaseClass {
 
-	HomePage hp;
-	CategoryPage cp;
+	HomePage Homepage;
+	CategoryPage Categorypage;
 
 	@Test
 	public void OpenHomepage() {
 
 		driver.get(p.getProperty("URL"));
-		System.out.println(driver.getTitle());
-		System.out.println(p.getProperty("Title"));
 		softAssert.assertEquals(driver.getTitle(), "Online-Parfümerie ✔️ Parfum & Kosmetik kaufen | DOUGLAS");
 		softAssert.assertAll();
 	}
 
 	@Test
 	public void cookieconsent() {
-		hp = new HomePage(driver);
-		hp.Acceptcookieclick();
+		Homepage = new HomePage(driver);
+		Homepage.Acceptcookieclick();
 	}
 
 	@Test
 	public void Menuclick() {
-		hp = new HomePage(driver);
-		hp.Menuclick();
-		cp = new CategoryPage(driver);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(cp.Menu));
+		Homepage = new HomePage(driver);
+		Homepage.Menuclick();
+		Categorypage = new CategoryPage(driver);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(Categorypage.Menu));
 		softAssert.assertEquals(driver.getTitle(), "Parfüm & Düfte ✔️ online kaufen » für Sie & Ihn | DOUGLAS");
 		softAssert.assertAll();
 	}
